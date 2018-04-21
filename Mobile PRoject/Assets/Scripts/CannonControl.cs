@@ -16,7 +16,7 @@ public class CannonControl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         placeOne = false;
-        rb = ball.GetComponent<Rigidbody2D>();
+        
     }
 	
 	// Update is called once per frame
@@ -36,9 +36,9 @@ public class CannonControl : MonoBehaviour {
         //Get key down only presses it once so only spawns one.
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
             
-            createBall();
-            ball.GetComponent<Rigidbody2D>().velocity = new Vector2(200f, 0f);
+            ball.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(thrust, 0);
 
 
 
@@ -55,11 +55,10 @@ public class CannonControl : MonoBehaviour {
         transform.Rotate(Vector3.back);
     }
 
-    public void createBall()
-    {
-        Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
-
-    }
+    //public void createBall()
+    //{
+        //Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
+    //}
 
 
 
