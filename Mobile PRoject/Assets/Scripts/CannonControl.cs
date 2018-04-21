@@ -5,7 +5,6 @@ using UnityEngine;
 public class CannonControl : MonoBehaviour {
     public GameObject ball;
     public float thrust;
-    bool placeOne;
     Rigidbody2D rb;
     public GameObject spawnLocation;
     
@@ -15,25 +14,25 @@ public class CannonControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        placeOne = false;
         
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        // Rotate the cannon left
         if (Input.GetKey(KeyCode.A))
         {
             RotateLeft();
         }
 
-
+        // Rotate the cannon right
         if (Input.GetKey(KeyCode.D))
         {
             RotateRight();
         }
 
-        //Get key down only presses it once so only spawns one.
+        //Get key down only so it presses it once so only spawns one.
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
@@ -55,10 +54,7 @@ public class CannonControl : MonoBehaviour {
         transform.Rotate(Vector3.back);
     }
 
-    //public void createBall()
-    //{
-        //Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
-    //}
+   
 
 
 
