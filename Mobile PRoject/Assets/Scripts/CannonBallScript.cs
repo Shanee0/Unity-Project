@@ -55,7 +55,13 @@ public class CannonBallScript : MonoBehaviour
         {
             playerControl.Player2Damage(GetDamage());
         }
+
+        Destroy(gameObject);
+
+
     }
+
+    
 
 
 
