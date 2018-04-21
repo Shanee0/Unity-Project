@@ -5,16 +5,19 @@ using UnityEngine;
 public class CannonControl : MonoBehaviour {
     public GameObject ball;
     public float thrust;
-    private bool placeOne;
+    bool placeOne;
     Rigidbody2D rb;
+    public GameObject spawnLocation;
+    
 
 
 
 
     // Use this for initialization
     void Start () {
-        placeOne = true;
-	}
+        placeOne = false;
+        rb = ball.GetComponent<Rigidbody2D>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,15 +33,15 @@ public class CannonControl : MonoBehaviour {
             RotateRight();
         }
 
-
-        if(Input.GetKey(KeyCode.Space) && placeOne)
+        //Get key down only presses it once so only spawns one.
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Rigidbody2D test;
-           test =  Instantiate(ball.GetComponent<Rigidbody2D>(), transform.position,Quaternion.Euler(0,0,90)) as Rigidbody2D;
-            test.AddForce(transform.forward * thrust);
             
-            
-            
+            createBall();
+            ball.GetComponent<Rigidbody2D>().velocity = new Vector2(200f, 0f);
+
+
+
         }
     }
 
@@ -51,6 +54,13 @@ public class CannonControl : MonoBehaviour {
     {
         transform.Rotate(Vector3.back);
     }
+
+    public void createBall()
+    {
+        Instantiate(ball, spawnLocation.transform.position, spawnLocation.transform.rotation);
+
+    }
+
 
 
 
