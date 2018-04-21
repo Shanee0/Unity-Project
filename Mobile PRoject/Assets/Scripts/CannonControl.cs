@@ -8,6 +8,7 @@ public class CannonControl : MonoBehaviour {
     bool placeOne;
     Rigidbody2D rb;
     public GameObject spawnLocation;
+    public int health;
     
 
 
