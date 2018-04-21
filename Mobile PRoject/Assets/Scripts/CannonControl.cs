@@ -7,6 +7,7 @@ public class CannonControl : MonoBehaviour {
     public float thrust;
     Rigidbody2D rb;
     public GameObject spawnLocation;
+    public int health;
     
 
 
